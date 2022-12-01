@@ -6,3 +6,5 @@ Advent of Code 2022 - Doing chores on the Santa's IT
 ```shell
 python -m advent day {number} {resource_file}
 ```
+
+Coming from the wonderful idea of https://adventofcode.com/2022
