@@ -32,7 +32,7 @@ class Base:
         try:
             # pylint: disable=unspecified-encoding
             with open(filename, "r") as inputfile:
-                self.data = inputfile.readlines()
+                self.data = [entry.strip() for entry in inputfile]
         except IOError:
             print("Input file could not be found.")
             sys.exit(1)
