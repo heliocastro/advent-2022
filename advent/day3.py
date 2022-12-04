@@ -49,6 +49,16 @@ class Day(Base):
         print(f"Number of group badges priorities is {priorities}")
 
     def prio_value(self, letter: int) -> int:
+        """Calculate correct value based on ASCII table
+        - Lowercase item types a through z have priorities 1 through 26.
+        - Uppercase item types A through Z have priorities 27 through 52.
+
+        Args:
+            letter (int): Then netry letter
+
+        Returns:
+            int: Resulting value
+        """
         # Play easy with ascci lowercase first
         if letter >= 97:
             return letter - 96  # 97 is 'a', so we reduce 97 to match prio 1
