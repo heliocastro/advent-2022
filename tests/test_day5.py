@@ -28,6 +28,8 @@ def stack_data():
 
 
 def test_stacks(stack_data):
-    """Test Day 4 - Camp Cleanup"""
+    """Test Day 5 - Supply Stacks"""
     day = day5.Day()
-    assert "CMZ", "CMZ" == day.crane_suffer(stack_data)
+    crane9000, crane9001 = day.crane_suffer(stack_data)
+    assert "CMZ" == crane9000
+    assert "MCD" == crane9001
