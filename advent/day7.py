@@ -49,10 +49,10 @@ class Day(Base):
 
         Args:
             data (List[str]): The data input
+            dirsize (List[int]): List of directory sizes
 
         Returns:
             int: Total of files
-            int: Dirsize to be deleted
         """
         total: int = 0
         while len(data) > 0:
