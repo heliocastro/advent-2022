@@ -13,11 +13,13 @@ def messages() -> None:
 
 @click.command()
 @click.argument("day_of_month", type=click.INT)
-@click.argument("filename", type=click.Path(exists=True))
-def day(day_of_month: int, filename: str) -> None:
+@click.option("-f", "--filename", "filename")
+def day(day_of_month: int, filename: str = "") -> None:
     """Do Day Work"""
     module = f"advent.day{day_of_month}"
     day_module = importlib.import_module(module)
+    if not filename:
+        filename = f"resources/day{day_of_month}.txt"
     day_chore = day_module.Day(filename)
     day_chore.process()
 
