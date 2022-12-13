@@ -8,6 +8,7 @@ As per default regular input on all Advent of Code commits comes in txt format,
 make standard base class always ready the related input in txt format
 """
 
+import logging
 import sys
 from typing import List
 
@@ -18,6 +19,9 @@ class Base:
     """
 
     def __init__(self, filename: str = ""):
+        logging.basicConfig(filename="advent.log", level=logging.DEBUG)
+        logging.info("Advent 2022 logging")
+
         self.data: List[str] = []
         if filename:
             self.readdata(filename)
