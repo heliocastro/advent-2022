@@ -23,15 +23,15 @@ def base_data():
     ]
 
 
-def test_treeview(base_data):
-    """Test Day 8 - Treetop House"""
-    day = day8.Day()
-    visibility, _ = day.treetop(base_data)
-    assert 21 == visibility
+class TestEight:
+    def test_treeview(self, base_data):
+        """Test Day 8 - Treetop House"""
+        day = day8.Day()
+        visibility, _ = day.treetop(base_data)
+        assert 21 == visibility
 
-
-def test_scenic_score(base_data):
-    """Test Day 8 - Treetop House"""
-    day = day8.Day()
-    _, score = day.treetop(base_data)
-    assert 8 == score
+    def test_scenic_score(self, base_data):
+        """Test Day 8 - Treetop House"""
+        day = day8.Day()
+        _, score = day.treetop(base_data)
+        assert 8 == score
