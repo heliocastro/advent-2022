@@ -19,7 +19,9 @@ class Base:
     """
 
     def __init__(self, filename: str = ""):
-        logging.basicConfig(filename="advent.log", level=logging.DEBUG)
+        logging.basicConfig(
+            filename="advent.log", level=logging.DEBUG, format="%(name)s  - $(message)s"
+        )
         logging.info("Advent 2022 logging")
 
         self.data: List[str] | None = None
