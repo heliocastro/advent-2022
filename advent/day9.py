@@ -26,6 +26,12 @@ tail (T) must always be touching (diagonally adjacent and even overlapping both 
 from copy import copy
 from typing import List, Tuple
 
+# Libraries
+# pylint: disable=redefined-builtin
+from rich import print
+from rich.console import Console
+from rich.table import Table
+
 # Application imports
 from advent.base import Base
 from advent.utils.point import Point
@@ -35,6 +41,10 @@ class Day(Base):
     """
     Day 9 Class: Rope Bridge
     """
+
+    console = Console()
+    table: Table | None = None
+    table_data: List[List[str]] = []
 
     def process(self) -> None:
         """Process the assignments
@@ -53,8 +63,9 @@ class Day(Base):
     def rope_lenght(self, data: List[str]) -> Tuple[int, int]:
         head: Point = Point(0, 0)
         tail: Point = Point(0, 0)
-        single_knot: int = 0
-        multiple_knots: int = 0
+        # We always start from 0,0 position and count as 1
+        single_knot: int = 1
+        multiple_knots: int = 1
         visited: List[Point] = [Point(0, 0)]
 
         max_x, max_y = 0, 0
@@ -71,6 +82,7 @@ class Day(Base):
                         tail.y = head.y
                         if tail not in visited:
                             visited.append(copy(tail))
+                            single_knot += 1
                 elif direction == "L":
                     head.x -= 1
                     if not self.adjacent(head, tail):
@@ -100,15 +112,19 @@ class Day(Base):
                 if head.y > max_y:
                     max_y = head.y
 
-        for y in range(max_y, -1, -1):
-            line: str = ""
-            for x in range(0, max_x + 1):
-                if y == 0 and x == 0:
-                    line += "s"
-                elif Point(x, y) in visited:
-                    line += "#"
+        for y in range(0, max_y):
+            line: List[str] = []
+            for x in range(0, max_x):
+                if Point(x, y) in visited:
+                    line.append("#")
                 else:
-                    line += "."
+                    line.append(".")
+            self.table_data.append(line)
+
+        self.do_table()
+
+        if len(visited) > 9:
+            multiple_knots = len(visited) - 9
 
         return single_knot, multiple_knots
 
@@ -119,3 +135,12 @@ class Day(Base):
                 if adj == head:
                     return True
         return False
+
+    def do_table(self) -> None:
+        if not self.table:
+            self.table = Table(show_header=False)
+            for _ in range(0, len(self.table_data[0])):
+                self.table.add_column("", ".")
+            for row in self.table_data:
+                self.table.add_row(*row)
+        self.console.print(self.table)

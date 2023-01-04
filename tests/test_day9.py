@@ -8,7 +8,7 @@ from advent import day9
 
 
 @pytest.fixture
-def base_data():
+def single_knot_data():
     """Fixture of test data
 
     Returns:
@@ -26,8 +26,25 @@ def base_data():
     ]
 
 
-def test_ropes(base_data):
+@pytest.fixture
+def multiple_knots_data():
+    """Fixture of test data
+
+    Returns:
+        _type_: List of data
+    """
+    return ["R 5", "U 8", "L 8", "D 3", "R 17", "D 10", "L 25", "U 20"]
+
+
+def test_single_knot(single_knot_data):
     """Test Day 9 - Rope Lenght"""
     day = day9.Day()
-    visited, _ = day.rope_lenght(base_data)
+    visited, _ = day.rope_lenght(single_knot_data)
     assert 13 == visited
+
+
+def test_mulyiple_knots(multiple_knots_data):
+    """Test Day 9 - Rope Lenght - Part2"""
+    day = day9.Day()
+    _, visited = day.rope_lenght(multiple_knots_data)
+    assert 36 == visited
