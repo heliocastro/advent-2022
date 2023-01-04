@@ -22,7 +22,7 @@ class Base:
         logging.basicConfig(filename="advent.log", level=logging.DEBUG)
         logging.info("Advent 2022 logging")
 
-        self.data: List[str] = []
+        self.data: List[str] | None = None
         if filename:
             self.readdata(filename)
 
