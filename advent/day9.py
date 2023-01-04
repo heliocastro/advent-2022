@@ -24,17 +24,11 @@ tail (T) must always be touching (diagonally adjacent and even overlapping both 
 
 # System imports
 from copy import copy
-from dataclasses import dataclass
 from typing import List, Tuple
 
 # Application imports
 from advent.base import Base
-
-
-@dataclass
-class Point:
-    x: int = 0
-    y: int = 0
+from advent.utils.point import Point
 
 
 class Day(Base):
