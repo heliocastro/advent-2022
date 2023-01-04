@@ -46,6 +46,9 @@ class Day(Base):
         Returns:
             int: The amount of calories spent by the Elfs
         """
+        if not self.data:
+            return
+
         self.strong_elfs(self.data)
 
         total = 0

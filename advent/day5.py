@@ -45,10 +45,10 @@ class Day(Base):
             int: Number of overlaps on the cleanup system
         """
 
-        cratemover_9000, cratemover_9001 = self.crane_suffer(self.data)
-
-        print(f"Your crane stacks container data is {cratemover_9000}.")
-        print(f"Your crane stacks container data is {cratemover_9001}.")
+        if self.data:
+            cratemover_9000, cratemover_9001 = self.crane_suffer(self.data)
+            print(f"Your crane stacks container data is {cratemover_9000}.")
+            print(f"Your crane stacks container data is {cratemover_9001}.")
 
     def crane_suffer(self, data: List[str]) -> Tuple[str, str]:
         """Return the crane letter list

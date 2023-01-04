@@ -56,9 +56,10 @@ class Day(Base):
             int: Number of overlaps on the cleanup system
         """
 
-        rope_lenght, snake = self.rope_lenght(self.data)
-        print(f"Visited on Part1: {rope_lenght}")
-        print(f"Visited with snake Part2: {snake}")
+        if self.data:
+            rope_lenght, snake = self.rope_lenght(self.data)
+            print(f"Visited on Part1: {rope_lenght}")
+            print(f"Visited with snake Part2: {snake}")
 
     def rope_lenght(self, data: List[str]) -> Tuple[int, int]:
         head: Point = Point(0, 0)

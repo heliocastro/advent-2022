@@ -36,10 +36,10 @@ class Day(Base):
         Returns:
             int: Number of overlaps on the cleanup system
         """
-
-        trees, score = self.treetop(self.data)
-        print(f"Number of visible trees are {trees}")
-        print(f"Visibility score: {score}")
+        if self.data:
+            trees, score = self.treetop(self.data)
+            print(f"Number of visible trees are {trees}")
+            print(f"Visibility score: {score}")
 
     def treetop(self, data: List[str]) -> Tuple[int, int]:
         """Get the number of visible trees and the score of visibility

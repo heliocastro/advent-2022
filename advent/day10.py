@@ -56,9 +56,9 @@ class Day(Base):
             int: Output value
         """
 
-        strenght = self.program(self.data)
-
-        print(f"Your current Cathode Strenght is {strenght}.\n")
+        if self.data:
+            strenght = self.program(self.data)
+            print(f"Your current Cathode Strenght is {strenght}.\n")
 
         for i in range(0, 6):
             line = (

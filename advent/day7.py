@@ -40,9 +40,10 @@ class Day(Base):
             int: Number of overlaps on the cleanup system
         """
 
-        self.dir(self.data)
-        print(f"Your directory size are {self.total}")
-        print(f"Your minimal delete dir is {self.freed}")
+        if self.data:
+            self.dir(self.data)
+            print(f"Your directory size are {self.total}")
+            print(f"Your minimal delete dir is {self.freed}")
 
     def dir(self, data: List[str], dirsize: List[int] = []) -> int:
         """Find file total in directories

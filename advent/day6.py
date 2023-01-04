@@ -42,11 +42,12 @@ class Day(Base):
             int: Number of overlaps on the cleanup system
         """
         # It has a single element on the list
-        data = self.data.pop()
-        signal = self.datastream_marker(data)
-        print(f"Your first signal marker is {signal}")
-        signal = self.datastream_marker(data, 14)
-        print(f"Your message signal marker is {signal}")
+        if self.data:
+            data = self.data.pop()
+            signal = self.datastream_marker(data)
+            print(f"Your first signal marker is {signal}")
+            signal = self.datastream_marker(data, 14)
+            print(f"Your message signal marker is {signal}")
 
     def datastream_marker(self, data: str, setmarker: int = 4) -> int:
         """The device will send your subroutine a datastream buffer (your puzzle input); your

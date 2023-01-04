@@ -33,9 +33,10 @@ class Day(Base):
         Returns:
             int: Number of overlaps on the cleanup system
         """
-        overlap, overlap_all = self.overlaps(self.data)
-        print(f"Number of overlaps in assignments: {overlap}")
-        print(f"Number of overlaps at all in assignments: {overlap_all}")
+        if self.data:
+            overlap, overlap_all = self.overlaps(self.data)
+            print(f"Number of overlaps in assignments: {overlap}")
+            print(f"Number of overlaps at all in assignments: {overlap_all}")
 
     def overlaps(self, data: List[str]) -> Tuple[int, int]:
         """Calculate the overlaps of the "well defined" Elf assignemnt work

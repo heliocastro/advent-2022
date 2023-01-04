@@ -43,10 +43,11 @@ class Day(Base):
             int: The amount of calories spent by the Elfs
         """
 
-        priorities = self.priorities(self.data)
-        print(f"The number of screwed Elf priorities is {priorities}")
-        priorities = self.badges(self.data)
-        print(f"Number of group badges priorities is {priorities}")
+        if self.data:
+            priorities = self.priorities(self.data)
+            print(f"The number of screwed Elf priorities is {priorities}")
+            priorities = self.badges(self.data)
+            print(f"Number of group badges priorities is {priorities}")
 
     def prio_value(self, letter: int) -> int:
         """Calculate correct value based on ASCII table

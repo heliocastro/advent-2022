@@ -56,9 +56,9 @@ class Day(Base):
         Returns:
             int: The amount of calories spent by the Elfs
         """
-
-        print(f"Your regular score is {self.game(self.data)}")
-        print(f"Your doctored score is {self.game(self.data, True)}")
+        if self.data:
+            print(f"Your regular score is {self.game(self.data)}")
+            print(f"Your doctored score is {self.game(self.data, True)}")
 
     def game(self, data: List[str], fixed: bool = False) -> int:
         """Calculate the strategy guide
